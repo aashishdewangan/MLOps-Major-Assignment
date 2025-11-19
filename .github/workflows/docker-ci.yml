@@ -2,7 +2,8 @@ name: Docker Build & Push CI/CD
 
 on:
   push:
-    branches: [ docker_cicd ]
+    branches:
+      - docker_cicd
 
 jobs:
   build:
