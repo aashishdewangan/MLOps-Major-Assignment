@@ -1,32 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: olivetti-deployment
+  name: mlops-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: olivetti
+      app: mlops-app
   template:
     metadata:
       labels:
-        app: olivetti
+        app: mlops-app
     spec:
       containers:
-        - name: olivetti
-          image: your-dockerhub-username/your-repo:latest
-          imagePullPolicy: Always
+        - name: mlops-container
+          image: aashishdewangan/mlops-app:latest
           ports:
             - containerPort: 5000
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 5000
-            initialDelaySeconds: 10
-            periodSeconds: 15
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 5000
-            initialDelaySeconds: 5
-            periodSeconds: 10
