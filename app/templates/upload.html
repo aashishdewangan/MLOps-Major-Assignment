@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Recognition - MLOps Assignment</title>
+</head>
+<body>
+    <h2>Upload a Face Image (64x64)</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result is not none %}
+        <h3>Predicted Class: {{ result }}</h3>
+    {% endif %}
+</body>
+</html>

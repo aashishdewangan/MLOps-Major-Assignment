@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: olivetti-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: olivetti
+  template:
+    metadata:
+      labels:
+        app: olivetti
+    spec:
+      containers:
+        - name: olivetti
+          image: your-dockerhub-username/your-repo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
